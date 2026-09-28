@@ -1,0 +1,132 @@
+/* NOVAARC — vanilla JS. No dependencies. */
+(function () {
+  'use strict';
+  var doc = document, body = doc.body;
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var $ = function (s, r) { return (r || doc).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || doc).querySelectorAll(s)); };
+
+  /* image fallback: if a photo fails, the tonal placeholder stays and the <img> is hidden */
+  $$('img').forEach(function (img) {
+    img.addEventListener('error', function () { img.style.display = 'none'; });
+  });
+
+  /* hero entrance — one orchestrated moment */
+  window.addEventListener('load', function () { requestAnimationFrame(function () { body.classList.add('loaded'); }); });
+  setTimeout(function () { body.classList.add('loaded'); }, 900);
+
+  /* nav: solid on scroll */
+  var nav = $('#nav');
+  function onScrollNav() { nav.classList.toggle('scrolled', window.scrollY > 60); }
+  onScrollNav();
+
+  /* mobile menu */
+  var burger = $('#burger'), menu = $('#menu');
+  function setMenu(open) {
+    body.classList.toggle('menu-open', open);
+    burger.setAttribute('aria-expanded', open);
+    burger.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    menu.setAttribute('aria-hidden', !open);
+    body.style.overflow = open ? 'hidden' : '';
+  }
+  burger.addEventListener('click', function () { setMenu(!body.classList.contains('menu-open')); });
+  $$('a', menu).forEach(function (a) { a.addEventListener('click', function () { setMenu(false); }); });
+  doc.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); });
+
+  /* stagger index for line reveals */
+  $$('[data-reveal-lines]').forEach(function (h) {
+    $$('.line', h).forEach(function (l, i) { l.style.setProperty('--i', i); });
+  });
+
+  /* scroll reveal */
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) {
+      if (!en.isIntersecting) return;
+      en.target.classList.add('in');
+      if (en.target.hasAttribute('data-reveal-lines')) $$('.line', en.target).forEach(function (l) { l.classList.add('in'); });
+      var cnt = $$('[data-count]', en.target);
+      if (en.target.matches('[data-count]')) cnt.push(en.target);
+      io.unobserve(en.target);
+    });
+  }, { threshold: 0.14, rootMargin: '0px 0px -6% 0px' });
+  $$('[data-reveal], [data-reveal-lines]').forEach(function (el) { io.observe(el); });
+
+  /* the .frame images reveal with their parent .project or on their own */
+  $$('.reveal-img').forEach(function (el) { if (!el.hasAttribute('data-reveal')) io.observe(el); });
+
+  /* counters */
+  function runCount(el) {
+    var end = parseInt(el.dataset.count, 10), suf = el.dataset.suffix || '', t0 = null, dur = 1800;
+    if (reduced) { el.textContent = pad(end) + suf; return; }
+    function step(t) {
+      if (!t0) t0 = t;
+      var p = Math.min((t - t0) / dur, 1), e = 1 - Math.pow(1 - p, 4);
+      el.textContent = pad(Math.round(end * e)) + suf;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  function pad(n) { return n < 10 ? '0' + n : '' + n; }
+  var cio = new IntersectionObserver(function (entries) {
+    entries.forEach(function (en) { if (en.isIntersecting) { runCount(en.target); cio.unobserve(en.target); } });
+  }, { threshold: 0.6 });
+  $$('[data-count]').forEach(function (el) { cio.observe(el); });
+
+  /* parallax: images drift slightly inside their frames */
+  var pars = $$('[data-parallax]'), ticking = false;
+  function parallax() {
+    var vh = window.innerHeight;
+    pars.forEach(function (p) {
+      var r = p.parentElement.getBoundingClientRect();
+      if (r.bottom < -100 || r.top > vh + 100) return;
+      var offset = (r.top + r.height / 2 - vh / 2) * parseFloat(p.dataset.parallax);
+      p.style.transform = 'translate3d(0,' + offset.toFixed(1) + 'px,0)';
+    });
+    ticking = false;
+  }
+  if (!reduced) parallax();
+  window.addEventListener('scroll', function () {
+    onScrollNav();
+    if (!reduced && !ticking) { ticking = true; requestAnimationFrame(parallax); }
+  }, { passive: true });
+  window.addEventListener('resize', function () { if (!reduced) parallax(); });
+
+  /* hero slideshow with counter */
+  var slides = $$('.slide'), cur = 0, DURATION = 6500, timer, barT;
+  var curEl = $('#cur'), nameEl = $('#curName'), bar = $('#bar');
+  function show(i) {
+    slides[cur].classList.remove('is-active');
+    cur = (i + slides.length) % slides.length;
+    var s = slides[cur];
+    s.classList.add('is-active');
+    var im = $('img', s); im.style.animation = 'none'; void im.offsetWidth; im.style.animation = '';
+    curEl.textContent = pad(cur + 1);
+    nameEl.style.opacity = 0;
+    setTimeout(function () { nameEl.textContent = im.dataset.name || ''; nameEl.style.opacity = 1; }, 250);
+    runBar();
+  }
+  function runBar() {
+    if (reduced) return;
+    bar.style.transition = 'none'; bar.style.width = '0';
+    void bar.offsetWidth;
+    bar.style.transition = 'width ' + DURATION + 'ms linear'; bar.style.width = '100%';
+  }
+  function start() { if (reduced) return; clearInterval(timer); timer = setInterval(function () { show(cur + 1); }, DURATION); runBar(); }
+  $('#next').addEventListener('click', function () { show(cur + 1); start(); });
+  $('#prev').addEventListener('click', function () { show(cur - 1); start(); });
+  doc.addEventListener('visibilitychange', function () { doc.hidden ? clearInterval(timer) : start(); });
+  start();
+
+  /* contact form (front-end only — wire to your backend / Formspree / Netlify Forms) */
+  var form = $('#form'), note = $('#formNote');
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var ok = form.checkValidity();
+    if (!ok) { note.textContent = 'Please add your name, a valid email and a few words about the project.'; return; }
+    note.textContent = 'Thank you. We will reply within two working days.';
+    form.reset();
+  });
+
+  /* project links are placeholders in the demo */
+  $$('a[href="#"]').forEach(function (a) { a.addEventListener('click', function (e) { e.preventDefault(); }); });
+})();
