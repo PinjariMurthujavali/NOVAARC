@@ -11,6 +11,14 @@
     img.addEventListener('error', function () { img.style.display = 'none'; });
   });
 
+  /* static mode: open index.html?static to show everything at once (for full-page screenshots) */
+  var STATIC = /[?&]static\b/.test(location.search) || !('IntersectionObserver' in window);
+  if (STATIC) {
+    body.classList.add('loaded');
+    $$('[data-reveal], [data-reveal-lines], .reveal-img, .line').forEach(function (el) { el.classList.add('in'); });
+    $$('[data-count]').forEach(function (el) { el.textContent = (parseInt(el.dataset.count, 10) < 10 ? '0' : '') + el.dataset.count + (el.dataset.suffix || ''); });
+  }
+
   /* hero entrance — one orchestrated moment */
   window.addEventListener('load', function () { requestAnimationFrame(function () { body.classList.add('loaded'); }); });
   setTimeout(function () { body.classList.add('loaded'); }, 900);
