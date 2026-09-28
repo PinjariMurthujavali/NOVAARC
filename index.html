@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NOVAARC — Architecture, Interiors & Urban Design Studio</title>
+<meta name="description" content="NOVAARC is an independent design studio creating considered spaces for living, working and gathering. Architecture, interiors and urban design.">
+<meta name="theme-color" content="#F1ECE3">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" id="nav">
+  <a href="#top" class="nav__brand" aria-label="NOVAARC home">NOVAARC</a>
+  <nav class="nav__links" aria-label="Primary">
+    <a href="#projects">Projects</a>
+    <a href="#studio">Studio</a>
+    <a href="#services">Services</a>
+    <a href="#journal">Journal</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a href="#contact" class="nav__cta">Start a project <span aria-hidden="true">↗</span></a>
+  <button class="nav__burger" id="burger" aria-label="Open menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+</header>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav class="menu__links">
+    <a href="#projects"><span>01</span>Projects</a>
+    <a href="#studio"><span>02</span>Studio</a>
+    <a href="#services"><span>03</span>Services</a>
+    <a href="#journal"><span>04</span>Journal</a>
+    <a href="#contact"><span>05</span>Contact</a>
+  </nav>
+  <div class="menu__foot">
+    <a href="#contact">Start a project ↗</a>
+    <p>hello@novaarc.studio</p>
+  </div>
+</div>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero__slides" aria-hidden="true">
+    <div class="slide is-active ph"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2200&q=80" alt="" data-name="Villa N°07 — Hyderabad"></div>
+    <div class="slide ph"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=2200&q=80" alt="" data-name="House of Light — Pune"></div>
+    <div class="slide ph"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=2200&q=80" alt="" data-name="The Courtyard — Bengaluru"></div>
+    <div class="slide ph"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2200&q=80" alt="" data-name="Mono Office — Mumbai"></div>
+    <div class="slide ph"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2200&q=80" alt="" data-name="Casa Verde — Goa"></div>
+  </div>
+  <div class="hero__shade"></div>
+
+  <div class="hero__content">
+    <p class="eyebrow hero__eyebrow">Architecture · Interiors · Urban Design</p>
+    <h1 class="hero__title">
+      <span class="line"><span>Spaces that shape</span></span>
+      <span class="line"><span><em>the way you live.</em></span></span>
+    </h1>
+    <div class="hero__row">
+      <p class="hero__lede">NOVAARC is an independent design studio creating considered spaces for living, working and gathering.</p>
+      <div class="hero__ctas">
+        <a href="#projects" class="btn btn--light">Explore projects <span aria-hidden="true">↗</span></a>
+        <a href="#contact" class="btn btn--ghost">Start a project</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero__foot">
+    <a href="#studio" class="scroll" aria-label="Scroll to studio"><i></i><span>Scroll</span></a>
+    <div class="counter" aria-live="off">
+      <button class="counter__btn" id="prev" aria-label="Previous project">←</button>
+      <div class="counter__meta">
+        <span class="counter__num"><b id="cur">01</b> / 05</span>
+        <span class="counter__name" id="curName">Villa N°07 — Hyderabad</span>
+        <span class="counter__bar"><i id="bar"></i></span>
+      </div>
+      <button class="counter__btn" id="next" aria-label="Next project">→</button>
+    </div>
+  </div>
+</section>
+
+<!-- 01 STUDIO -->
+<section class="studio" id="studio">
+  <p class="label" data-reveal>01 — Studio</p>
+  <div class="studio__grid">
+    <h2 class="display studio__title" data-reveal-lines>
+      <span class="line"><span>We design</span></span>
+      <span class="line"><span><em>beyond</em></span></span>
+      <span class="line"><span>the obvious.</span></span>
+    </h2>
+
+    <figure class="studio__img frame reveal-img ph" data-reveal>
+      <div class="par" data-parallax="0.10"><img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80" alt="Interior with warm natural light and timber detailing" loading="lazy"></div>
+    </figure>
+
+    <div class="studio__copy" data-reveal>
+      <p class="lead">NOVAARC is a design studio focused on architecture, interiors and environments that remain relevant beyond trends.</p>
+      <p>We believe good design is not about adding more.</p>
+      <p>It is about understanding what matters.</p>
+      <a href="#philosophy" class="link">Discover NOVAARC <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 02 PROJECTS -->
+<section class="work" id="projects">
+  <header class="work__head">
+    <h2 class="display" data-reveal-lines><span class="line"><span>Selected</span></span><span class="line"><span><em>work</em></span></span></h2>
+    <p class="work__sub" data-reveal>A collection of spaces shaped by light, material and context.</p>
+  </header>
+
+  <div class="work__grid">
+    <a href="#" class="project p1" data-reveal>
+      <div class="frame reveal-img ph"><div class="par" data-parallax="0.07"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80" alt="Villa N°07, Hyderabad" loading="lazy"></div><span class="project__arrow" aria-hidden="true">↗</span><span class="project__no">01</span></div>
+      <div class="project__meta"><h3>Villa N°07</h3><p>Hyderabad <i></i> Residential</p></div>
+    </a>
+
+    <a href="#" class="project p2" data-reveal>
+      <div class="frame reveal-img ph"><div class="par" data-parallax="0.07"><img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1000&q=80" alt="House of Light, Pune" loading="lazy"></div><span class="project__arrow" aria-hidden="true">↗</span><span class="project__no">02</span></div>
+      <div class="project__meta"><h3>House of Light</h3><p>Pune <i></i> Residential</p></div>
+    </a>
+
+    <a href="#" class="project p3" data-reveal>
+      <div class="frame reveal-img ph"><div class="par" data-parallax="0.07"><img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1000&q=80" alt="The Courtyard, Bengaluru" loading="lazy"></div><span class="project__arrow" aria-hidden="true">↗</span><span class="project__no">03</span></div>
+      <div class="project__meta"><h3>The Courtyard</h3><p>Bengaluru <i></i> Hospitality</p></div>
+    </a>
+
+    <a href="#" class="project p4" data-reveal>
+      <div class="frame reveal-img ph"><div class="par" data-parallax="0.07"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80" alt="Mono Office, Mumbai" loading="lazy"></div><span class="project__arrow" aria-hidden="true">↗</span><span class="project__no">04</span></div>
+      <div class="project__meta"><h3>Mono Office</h3><p>Mumbai <i></i> Commercial</p></div>
+    </a>
+
+    <a href="#" class="project p5" data-reveal>
+      <div class="frame reveal-img ph"><div class="par" data-parallax="0.06"><img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2200&q=80" alt="Casa Verde, Goa" loading="lazy"></div><span class="project__arrow" aria-hidden="true">↗</span><span class="project__no">05</span></div>
+      <div class="project__meta"><h3>Casa Verde</h3><p>Goa <i></i> Residential</p></div>
+    </a>
+  </div>
+</section>
+
+<!-- 03 FEATURE -->
+<section class="feature" id="feature">
+  <div class="feature__bg ph"><div class="par" data-parallax="0.14"><img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=2400&q=80" alt="Casa Verde, a concrete house set in landscape" loading="lazy"></div></div>
+  <div class="feature__shade"></div>
+  <div class="feature__inner">
+    <div class="feature__info" data-reveal>
+      <dl>
+        <div><dt>Location</dt><dd>Goa, India</dd></div>
+        <div><dt>Category</dt><dd>Residential</dd></div>
+        <div><dt>Year</dt><dd>2026</dd></div>
+        <div><dt>Materials</dt><dd>Board-formed concrete, laterite, teak</dd></div>
+      </dl>
+    </div>
+    <div class="feature__title">
+      <h2 class="display display--xl" data-reveal-lines><span class="line"><span>Casa</span></span><span class="line"><span><em>Verde</em></span></span></h2>
+      <p data-reveal>A quiet relationship between concrete, light and landscape.</p>
+      <a href="#" class="btn btn--light" data-reveal>View project <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- 04 PHILOSOPHY -->
+<section class="philosophy" id="philosophy">
+  <div class="philosophy__bg ph"><div class="par" data-parallax="0.10"><img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=2200&q=70" alt="" loading="lazy"></div></div>
+  <div class="philosophy__inner">
+    <p class="label label--light" data-reveal>Philosophy</p>
+    <h2 class="display display--xl" data-reveal-lines>
+      <span class="line"><span>Less noise.</span></span>
+      <span class="line"><span><em>More meaning.</em></span></span>
+    </h2>
+    <p class="philosophy__text" data-reveal>We believe architecture should feel inevitable — as though the space could never have been designed any other way.</p>
+  </div>
+</section>
+
+<!-- 05 SERVICES -->
+<section class="services" id="services">
+  <header class="services__head">
+    <h2 class="display" data-reveal-lines><span class="line"><span>What</span></span><span class="line"><span><em>we do</em></span></span></h2>
+  </header>
+  <div class="services__list">
+    <a href="#contact" class="svc" data-reveal>
+      <span class="svc__no">01</span>
+      <h3 class="svc__title">Architecture</h3>
+      <p class="svc__desc">Residential, commercial and hospitality architecture shaped around context, proportion and human experience.</p>
+      <span class="svc__arrow" aria-hidden="true">→</span>
+    </a>
+    <a href="#contact" class="svc" data-reveal>
+      <span class="svc__no">02</span>
+      <h3 class="svc__title">Interior Design</h3>
+      <p class="svc__desc">Material-led interiors balancing atmosphere, function and timeless visual language.</p>
+      <span class="svc__arrow" aria-hidden="true">→</span>
+    </a>
+    <a href="#contact" class="svc" data-reveal>
+      <span class="svc__no">03</span>
+      <h3 class="svc__title">Urban Design</h3>
+      <p class="svc__desc">Thoughtful environments connecting architecture, landscape and movement.</p>
+      <span class="svc__arrow" aria-hidden="true">→</span>
+    </a>
+    <a href="#contact" class="svc" data-reveal>
+      <span class="svc__no">04</span>
+      <h3 class="svc__title">Design Consulting</h3>
+      <p class="svc__desc">Strategic design direction from first idea through final execution.</p>
+      <span class="svc__arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<!-- 06 NUMBERS -->
+<section class="numbers" id="numbers">
+  <div class="numbers__grid">
+    <div class="stat" data-reveal><b data-count="18" data-suffix="+">0</b><span>Projects</span></div>
+    <div class="stat" data-reveal><b data-count="9" data-suffix="">0</b><span>Years of practice</span></div>
+    <div class="stat" data-reveal><b data-count="7" data-suffix="">0</b><span>Design awards</span></div>
+    <div class="stat" data-reveal><b data-count="5" data-suffix="">0</b><span>Cities</span></div>
+  </div>
+</section>
+
+<!-- JOURNAL -->
+<section class="journal" id="journal">
+  <header class="journal__head">
+    <h2 class="display" data-reveal-lines><span class="line"><span>The</span></span><span class="line"><span><em>journal</em></span></span></h2>
+    <p class="work__sub" data-reveal>Notes on material, light and the practice of making places.</p>
+  </header>
+  <div class="journal__list">
+    <a href="#" class="entry" data-reveal><time>Sep 2026</time><h3>Why we start every project with the sun path</h3><span>Process</span><i aria-hidden="true">↗</i></a>
+    <a href="#" class="entry" data-reveal><time>Aug 2026</time><h3>Laterite, concrete and the patience of raw materials</h3><span>Materials</span><i aria-hidden="true">↗</i></a>
+    <a href="#" class="entry" data-reveal><time>Jul 2026</time><h3>Designing a courtyard for a city that never stops</h3><span>Hospitality</span><i aria-hidden="true">↗</i></a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact__grid">
+    <div>
+      <p class="label label--light" data-reveal>Contact</p>
+      <h2 class="display display--xl" data-reveal-lines>
+        <span class="line"><span>Let’s build</span></span>
+        <span class="line"><span>something <em>that lasts.</em></span></span>
+      </h2>
+      <div class="contact__details" data-reveal>
+        <p><small>Studio</small>Road No. 36, Jubilee Hills<br>Hyderabad, India</p>
+        <p><small>Enquiries</small><a href="mailto:hello@novaarc.studio">hello@novaarc.studio</a></p>
+      </div>
+    </div>
+
+    <form class="form" id="form" data-reveal novalidate>
+      <label><span>Name</span><input type="text" name="name" required autocomplete="name"></label>
+      <label><span>Email</span><input type="email" name="email" required autocomplete="email"></label>
+      <label><span>Project type</span>
+        <select name="type">
+          <option>Residence</option><option>Hospitality</option><option>Commercial</option><option>Interiors only</option><option>Urban / masterplan</option>
+        </select>
+      </label>
+      <label><span>Tell us about the site and your ambitions</span><textarea name="msg" rows="3" required></textarea></label>
+      <button type="submit" class="btn btn--light">Send enquiry <span aria-hidden="true">↗</span></button>
+      <p class="form__note" id="formNote" role="status"></p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="footer__top">
+    <a href="#top" class="footer__mark" aria-label="NOVAARC, back to top">NOVAARC</a>
+  </div>
+  <div class="footer__mid">
+    <p>© 2026 NOVAARC Studio. Architecture, interiors and urban design.</p>
+    <nav aria-label="Footer">
+      <a href="#projects">Projects</a><a href="#studio">Studio</a><a href="#services">Services</a><a href="#journal">Journal</a>
+      <a href="#" rel="noopener">Instagram</a><a href="#" rel="noopener">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="credit">
+    <p>Designed &amp; built by <b>Murthu</b> — Day 01 of 100 Premium Websites.</p>
+    <p class="credit__cta">Want a website like this for your business?
+      <a href="tel:+919100850087">9100850087</a>
+      <a href="mailto:luckymurthu@gmail.com">luckymurthu@gmail.com</a>
+    </p>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
